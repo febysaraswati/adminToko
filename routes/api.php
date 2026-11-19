@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\AduanController;
 use App\Http\Controllers\Api\StockLogController; 
+use App\Http\Controllers\Api\LibraryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,12 @@ Route::apiResource('products', ProductController::class);
 
 // 2. Rute Stock Logs diletakkan di luar (sejajar dengan rute produk & kategori)
 Route::apiResource('stock-logs', StockLogController::class);
+
+// --- RUTE PERPUSTAKAAN ---
+Route::get('/library/books', [LibraryController::class, 'getBooks']);
+Route::post('/library/books', [LibraryController::class, 'storeBook']);
+Route::get('/library/loans', [LibraryController::class, 'getLoans']);
+Route::post('/library/loans', [LibraryController::class, 'storeLoan']);
 
 // Auth routes (Publik - Register & Login)
 Route::post('/register', [AuthController::class, 'register']);
